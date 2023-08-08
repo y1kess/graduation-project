@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head> 
+  <title>Valorant</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      background-color: #f5f5f5;
+      background-image: url('background2.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .header {
+      background-color: #FF4655;
+      padding: 10px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      margin-bottom: 30px;
+    }
+
+    .head-name {     
+      padding: 10px 0;     
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .night-mode-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+    }
+
+    .night-mode-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .night-mode-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #F7F7F7;
+      border-radius: 25px;
+      transition: .4s;
+    }
+
+    .night-mode-slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 2px;
+      bottom: 2px;
+      background-color: #e45858;
+      border-radius: 50%;
+      transition: .4s;
+    }
+
+    input:checked + .night-mode-slider {
+      background-color: #303030;
+    }
+
+    input:checked + .night-mode-slider:before {
+      transform: translateX(25px);
+      background-color: #e45858;
+    }
+
+    
+    section {
+      padding-top: 50px;
+    }
+    .game-info {
+      margin-bottom: 30px;
+      
+    }
+    
+    .game-mode {
+      margin-bottom: 20px;
+    }
+    
+    .game-mode-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #CF0042;
+      text-shadow: #FF0152 2px 3px 4px;
+    }
+    
+    .game-mode-description {
+    color: #E8FFF7; 
+    text-shadow: white 2px 3px 4px;
+    }
+    
+    .agents-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      
+    }
+    
+    .agent-card {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      margin-bottom: 20px;
+    }
+    
+    
+    .agent-name {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #dd2222;
+    }
+    
+    .agent-abilities {
+      margin-bottom: 10px;
+      color: #1e1d1d;
+      text-shadow: #303030 2px 3px 4px;
+    }
+    
+    .download-section {
+      text-align: center;
+    }
+    
+    .download-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #FF4655;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    
+    .download-button:hover {
+      background-color: #ff0f22;
+      text-decoration: none;
+      color:#ffd3d7
+    }
+
+    .video{
+    
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    }
+    
+
+
+    .game-info-top{
+    text-align: center; 
+    color: #FF3243; 
+    text-shadow: #FF4655 2px 3px 4px;
+    }
+
+    .game-info-bot{
+    color: #1e1d1d; 
+    text-shadow: #303030 2px 3px 4px;
+    }
+
+    
+    .escalation-title{
+    
+    color: #FF3243; 
+    text-shadow: #FF4655 2px 3px 4px;
+    }
+
+    .unrated-info{
+    color: #1e1d1d; 
+    text-shadow: #303030 2px 3px 4px;
+    }
+    
+  </style>
+</head>
+<body>
+  <header class="head-name" id ="top">
+
+    <div style="max-width: 100%; text-align: center; height: auto;">
+      <a href="https://playvalorant.com/en-us/download/"><img src="Valorant-Logo-PNG.png"></img></a>
+    </div>
+  </header>
+
+  <div class="header">
+    <div class="night-mode-switch">
+      <label>
+        <input type="checkbox" id="nightModeToggle" onchange="toggleNightMode()">
+        <span class="night-mode-slider"></span>
+      </label>
+    </div>
+    <a class="download-button" onclick="document.getElementById('top').scrollIntoView({behavior: 'smooth'});" style="cursor: pointer">Home</a>
+    <a class="download-button" onclick="document.getElementById('game-modes-section').scrollIntoView({behavior: 'smooth'});" style="cursor: pointer">Game Modes</a>
+    <a class="download-button" onclick="document.getElementById('agents-section').scrollIntoView({behavior: 'smooth'});" style="cursor: pointer">Agents</a>
+    <a class="download-button" href="merch.html">Merchandise</a>
+    <a class="download-button" onclick="document.getElementById('download-section').scrollIntoView({behavior: 'smooth'});" style="cursor: pointer">Download</a>
+  </div>
+  
+  
+  <div class="game-info">
+    <h2 class="game-info-top">About the Game</h2>
+    <p class= 'game-info-bot'>Valorant is a free-to-play competitive first-person shooter developed and published by Riot Games. It features intense tactical gameplay, precise gunplay, and a diverse roster of agents with unique abilities.</p>
+  </div>
+  <div class="video">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/IhhjcB2ZjIM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></a>
+  </div>
+  <section id="game-modes-section">
+    <h2 class="game-info-top">Game Modes</h2>
+  
+  <div class="game-mode">
+    <h3 class="escalation-title">Unrated</h3>
+    <p class='unrated-info'>Unrated mode is a casual game mode where players can play matches to practice and improve their skills without the pressure of ranked competition.</p>
+  </div>
+  
+  <div class="game-mode">
+    <h3 class="escalation-title">Competitive</h3>
+    <p class='unrated-info'>Competitive mode is where players can test their skills in a ranked environment. Players earn and lose rank points based on their performance and can climb the ranks to prove their prowess.</p>
+  </div>
+  
+  <div class="game-mode">
+    <h3 class="escalation-title">Spike Rush</h3>
+    <p class='unrated-info'>Spike Rush is a faster-paced game mode with a shorter match duration. Each player starts the round with the same randomly assigned weapon and abilities, adding an element of unpredictability.</p>
+  </div>
+
+    <div class="game-mode">
+    <h3 class="escalation-title">Swiftplay</h3>
+    <p class='unrated-info'>Swiftplay is a best-of-nine spike (Plant/Defuse) mode. It has most of the same gameplay rules as Unrated but with the following changes to adjust for its shorter duration:
+
+All player start each half with two points for their ultimate.
+No credit bonuses for loss streaks.
+Credits earned based on round outcome have adjusted values and are the same for both teams, with the exception of round 2</p>
+  </div>
+
+  <div class="game-mode">
+    <h3 class="escalation-title">Deathmatch</h3>
+    <p class='unrated-info'>Deathmatch is a multiplayer free-for-all game mode designed to allow players to hone their gunplay mechanics or warm up before playing Competitive. Each player loads into a random map with a random agent that they own. Players start in a brief warm-up phase before the real game starts. Players cannot buy or use abilities but are automatically given Heavy Shields. They can buy whatever weapons they want.</p>
+  </div>
+
+    <div class="game-mode">
+    <h3 class="escalation-title">Escalation</h3>
+    <p class='unrated-info'>Escalation is a 5v5 team deathmatch style mode where players kill and race the enemy team through a cycle of different weapons and abilities, advancing together as a team through Escalation levels. Players load into game with a random agent. The first team to finish level 12, or the furthest along in 10 minutes, wins the game.</p>
+  </div>
+  </section>
+
+  <section id="agents-section">
+    <h2 class='unrated-info' style = "text-align: center; margin-bottom: 30px;">Agents and Abilities</h2>
+  
+  <div class="agents-container">
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #86FFFB; text-shadow: #0083FF 2px 3px 4px">Jett</h3>
+      <img src="jett1.png" alt="Jett">
+      <p class="agent-abilities">Role: Duelist</p>
+      <p class="agent-abilities">Ability 1: Cloudburst</p>
+      <p class="agent-abilities">Ability 2: Updraft</p>
+      <p class="agent-abilities">Ability 3: Tailwind</p>
+      <p class="agent-abilities">Ultimate: Blade Storm</p>
+    </div>
+    
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #FF7526; text-shadow: #FF8000 2px 3px 4px">Phoenix</h3>
+      <img src="phoenix.png" alt="Phoenix">
+      <p class="agent-abilities">Role: Duelist</p>
+      <p class="agent-abilities">Ability 1: Curveball</p>
+      <p class="agent-abilities">Ability 2: Hot Hands</p>
+      <p class="agent-abilities">Ability 3: Blaze</p>
+      <p class="agent-abilities">Ultimate: Run It Back</p>
+    </div>
+    
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #27FFB4; text-shadow: #00D359 2px 3px 4px">Sage</h3>
+      <img src="sage.png" alt="Sage">
+      <p class="agent-abilities">Role: Sentinel</p>
+      <p class="agent-abilities">Ability 1: Barrier Orb</p>
+      <p class="agent-abilities">Ability 2: Slow Orb</p>
+      <p class="agent-abilities">Ability 3: Healing Orb</p>
+      <p class="agent-abilities">Ultimate: Resurrection</p>
+    </div>
+    
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #E8FFF7; text-shadow: black 2px 3px 4px">Cypher</h3>
+      <img src="cypher.png" alt="Cypher">
+      <p class="agent-abilities">Role: Sentinel</p>
+      <p class="agent-abilities">Ability 1: Trapwire</p>
+      <p class="agent-abilities">Ability 2: Cyber Cage</p>
+      <p class="agent-abilities">Ability 3: Spy Camera</p>
+      <p class="agent-abilities">Ultimate: Neural Theft</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #945C00; text-shadow: #7D4E00 2px 3px 4px">Brimstone</h3>
+      <img src="brimstone.png" alt="Brimstone">
+      <p class="agent-abilities">Role: Controller</p>
+      <p class="agent-abilities">Ability 1: Incendiary</p>
+      <p class="agent-abilities">Ability 2: Sky smoke</p>
+      <p class="agent-abilities">Ability 3: Stim beacon</p>
+      <p class="agent-abilities">Ultimate: Orbital strike</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #00E9E9; text-shadow: #00C4C4 2px 3px 4px">Sova</h3>
+      <img src="sova.png" alt="Sova">
+      <p class="agent-abilities">Role: Initiator </p>
+      <p class="agent-abilities">Ability 1: Shock bolt</p>
+      <p class="agent-abilities">Ability 2: Recon bolt</p>
+      <p class="agent-abilities">Ability 3: Owl drone</p>
+      <p class="agent-abilities">Ultimate: Hunter's fury</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #00FF0F; text-shadow: #00B00A 2px 3px 4px">Viper</h3>
+      <img src="viper.png" alt="Viper">
+      <p class="agent-abilities">Role: Controller</p>
+      <p class="agent-abilities">Ability 1: Poison cloud</p>
+      <p class="agent-abilities">Ability 2: Toxic screen</p>
+      <p class="agent-abilities">Ability 3: Snake bite</p>
+      <p class="agent-abilities">Ultimate: Viper's pit</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #E100E1; text-shadow: #A000A0 2px 3px 4px">Reyna</h3>
+      <img src="reyna.png" alt="Reyna">
+      <p class="agent-abilities">Role: Duelist</p>
+      <p class="agent-abilities">Ability 1: Devour</p>
+      <p class="agent-abilities">Ability 2: Dismiss</p>
+      <p class="agent-abilities">Ability 3: Leer</p>
+      <p class="agent-abilities">Ultimate: Empress</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #FFFF00; text-shadow: #D6D649 2px 3px 4px">Killjoy</h3>
+      <img src="kj.png" alt="Killjoy">
+      <p class="agent-abilities">Role: Sentinel</p>
+      <p class="agent-abilities">Ability 1: Alarmbot</p>
+      <p class="agent-abilities">Ability 2: Turret</p>
+      <p class="agent-abilities">Ability 3: Nanoswarm</p>
+      <p class="agent-abilities">Ultimate: Lockdown</p>
+    </div>
+    
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #E29C1A; text-shadow: #D6B249 2px 3px 4px">Breach</h3>
+      <img src="breach.png" alt="Breach">
+      <p class="agent-abilities">Role: Initiator</p>
+      <p class="agent-abilities">Ability 1: Flashpoint</p>
+      <p class="agent-abilities">Ability 2: Fault line</p>
+      <p class="agent-abilities">Ability 3: Aftershock</p>
+      <p class="agent-abilities">Ultimate: Rolling thunder</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #4B00D7; text-shadow: #36009B 2px 3px 4px">Omen</h3>
+      <img src="omen.png" alt="Omen">
+      <p class="agent-abilities">Role: Controller</p>
+      <p class="agent-abilities">Ability 1: Paranoia</p>
+      <p class="agent-abilities">Ability 2: Dark cover</p>
+      <p class="agent-abilities">Ability 3: Shrouded step</p>
+      <p class="agent-abilities">Ultimate: From the shadows</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #EF8D00; text-shadow: #BC6F00 2px 3px 4px">Raze</h3>
+      <img src="raze.png" alt="Raze">
+      <p class="agent-abilities">Role: Duelist</p>
+      <p class="agent-abilities">Ability 1: Blast pack</p>
+      <p class="agent-abilities">Ability 2: Paint shells</p>
+      <p class="agent-abilities">Ability 3: Boom bot</p>
+      <p class="agent-abilities">Ultimate: Showstopper</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #7DFF1D; text-shadow: #91DF58 2px 3px 4px">Skye</h3>
+      <img src="skye.png" alt="Skye">
+      <p class="agent-abilities">Role: Initiator</p>
+      <p class="agent-abilities">Ability 1: Trailblazer</p>
+      <p class="agent-abilities">Ability 2: Guiding light</p>
+      <p class="agent-abilities">Ability 3: Regrowth</p>
+      <p class="agent-abilities">Ultimate: Seekers</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #1657F8; text-shadow: #0037BF 2px 3px 4px">Yoru</h3>
+      <img src="yoru.png" alt="Yoru">
+      <p class="agent-abilities">Role: Duelist</p>
+      <p class="agent-abilities">Ability 1: Blindside</p>
+      <p class="agent-abilities">Ability 2: Gatecrash</p>
+      <p class="agent-abilities">Ability 3: Fakeout</p>
+      <p class="agent-abilities">Ultimate: Dimenshional drift</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #B716F8; text-shadow: #8201B6 2px 3px 4px">Astra</h3>
+      <img src="astra.png" alt="Astra">
+      <p class="agent-abilities">Role: Controller</p>
+      <p class="agent-abilities">Ability 1: Nova pulse</p>
+      <p class="agent-abilities">Ability 2: Nebula</p>
+      <p class="agent-abilities">Ability 3: Gravity well</p>
+      <p class="agent-abilities">Ultimate: Astral form / Cosmic divide</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #0300AD; text-shadow: #02006F 2px 3px 4px">KAY/O</h3>
+      <img src="kayo.png" alt="KAY/O">
+      <p class="agent-abilities">Role: Initiator</p>
+      <p class="agent-abilities">Ability 1: Flash/Drive</p>
+      <p class="agent-abilities">Ability 2: Zero/Point</p>
+      <p class="agent-abilities">Ability 3: Frag/Ment</p>
+      <p class="agent-abilities">Ultimate: Null/CMD</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #FFFF1D; text-shadow: #E7CF00 2px 3px 4px">Chamber</h3>
+      <img src="chamber.png" alt="Chamber">
+      <p class="agent-abilities">Role: Sentinel</p>
+      <p class="agent-abilities">Ability 1: Headhunter</p>
+      <p class="agent-abilities">Ability 2: Rendezvous</p>
+      <p class="agent-abilities">Ability 3: Trademark</p>
+      <p class="agent-abilities">Ultimate: Tour de Force</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #00CCFF; text-shadow: #00B9E7 2px 3px 4px">Neon</h3>
+      <img src="neon.png" alt="Neon">
+      <p class="agent-abilities">Role: Duelist</p>
+      <p class="agent-abilities">Ability 1: Relay bolt</p>
+      <p class="agent-abilities">Ability 2: High gear</p>
+      <p class="agent-abilities">Ability 3: Fast lane</p>
+      <p class="agent-abilities">Ultimate: Overdrive</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #1E008E; text-shadow: #150064 2px 3px 4px">Fade</h3>
+      <img src="fade.png" alt="Fade">
+      <p class="agent-abilities">Role: Initiator</p>
+      <p class="agent-abilities">Ability 1: Seize</p>
+      <p class="agent-abilities">Ability 2: Haunt</p>
+      <p class="agent-abilities">Ability 3: Prowler</p>
+      <p class="agent-abilities">Ultimate: Nightfall</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #0090B9; text-shadow: #006E8E 2px 3px 4px">Harbor</h3>
+      <img src="harbor.png" alt="Harbor">
+      <p class="agent-abilities">Role: Controller</p>
+      <p class="agent-abilities">Ability 1: Cove</p>
+      <p class="agent-abilities">Ability 2: High tide</p>
+      <p class="agent-abilities">Ability 3: Cascade</p>
+      <p class="agent-abilities">Ultimate: Reckoning</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #5EDF00; text-shadow: #4EB900 2px 3px 4px">Gekko</h3>
+      <img src="gekko.png" alt="Gekko">
+      <p class="agent-abilities">Role: Initiator</p>
+      <p class="agent-abilities">Ability 1: Wingman</p>
+      <p class="agent-abilities">Ability 2: Dizzy</p>
+      <p class="agent-abilities">Ability 3: Mosh Pit</p>
+      <p class="agent-abilities">Ultimate: Thrash</p>
+    </div>
+
+    <div class="agent-card">
+      <h3 class="agent-name" style = "color: #fff8dc; text-shadow: black 2px 3px 4px">Deadlock</h3>
+      <img src="deadlock.png" alt="Deadlock">
+      <p class="agent-abilities">Role: Sentinel</p>
+      <p class="agent-abilities">Ability 1: Sonic Sensor</p>
+      <p class="agent-abilities">Ability 2: Barrier Mesh</p>
+      <p class="agent-abilities">Ability 3: Gravnet</p>
+      <p class="agent-abilities">Ultimate: Annihilation</p>
+    </div>
+
+  </div>
+  </section>
+
+  <section id="download-section">
+    <div class="download-section">
+        <a class="download-button" href="https://playvalorant.com/en-us/download/">Download Valorant</a>
+    </div>
+
+  </section>
+
+  
+  <script> 
+    function toggleNightMode() {
+      const body = document.body;
+      const nightModeToggle = document.getElementById('nightModeToggle');
+      const agentsAbilities = document.querySelectorAll('.agent-abilities');
+
+      const gameInfoTop = document.querySelectorAll('.game-info-top');
+      const gameInfoBot = document.querySelectorAll('.game-info-bot');
+      const escalationTitle = document.querySelectorAll('.escalation-title');
+      const unratedInfo = document.querySelectorAll('.unrated-info');
+
+      
+      const agentsCard = document.querySelectorAll('.agent-card');
+
+
+      if (nightModeToggle.checked) {
+        body.style.backgroundColor = '#333';
+        body.style.color = '#fff';
+        agentsAbilities.forEach(element => {
+          element.style.color = '#E8FFF7';
+          element.style.textShadow = 'white 2px 3px 4px';
+        });
+
+        agentsCard.forEach(element => {
+          element.style.backgroundColor = '#1e1d1d';
+          
+        });
+
+
+
+        gameInfoBot.forEach(element => {
+          element.style.color = '#E8FFF7';
+          element.style.textShadow = 'white 2px 3px 4px';
+        });
+
+
+        unratedInfo.forEach(element => {
+          element.style.color = '#E8FFF7';
+          element.style.textShadow = 'white 2px 3px 4px';
+        });
+
+        body.style.backgroundImage = 'url(background3.jpg)';
+      } else {
+        body.style.backgroundColor = '#f5f5f5';
+        body.style.color = '#222';
+        agentsAbilities.forEach(element => {
+          element.style.color = '#1e1d1d';
+          element.style.textShadow = '#303030 2px 3px 4px';
+        });
+
+        agentsCard.forEach(element => {
+          element.style.backgroundColor = 'white';
+          
+        });
+
+
+
+        gameInfoBot.forEach(element => {
+          element.style.color = '#1e1d1d';
+          element.style.textShadow = '#303030 2px 3px 4px';
+        });
+
+
+
+        unratedInfo.forEach(element => {
+          element.style.color = '#1e1d1d';
+          element.style.textShadow = '#303030 2px 3px 4px';
+        });
+
+        body.style.backgroundImage = 'url(background2.jpg)';
+      }
+    }
+
+   
+    function goToMerchPage() {
+      window.location.href = 'merch.html';
+    }
+
+   
+    function animateAgentCard(agentCard) {
+      agentCard.style.transform = 'scale(1.05)';
+    }
+    function scrollDown() {
+    window.scrollTo({top: window.innerHeight, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

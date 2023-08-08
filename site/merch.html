@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valorant Merchandise</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+      background-color: #f5f5f5;
+      background-image: url('background2.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .header {
+      background-color: #FF4655;
+      padding: 10px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      margin-bottom: 30px;
+    }
+
+    .merch-item {
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 400px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+    
+    .add-to-cart-btn{
+      display: inline-block;
+      padding: 5px 10px;
+      font-size: 18px;
+      background-color: #FF4655;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      border: 0
+    }
+
+    .merch-image {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .merch-name {
+      font-size: 24px;
+      font-weight: bold;
+      color: #dd2222;
+      text-shadow: #cb1e1e 2px 3px 4px;
+      margin-bottom: 10px;
+    }
+
+    .merch-price {
+      font-size: 18px;
+      color: #777;
+      text-shadow: #6d6d6d 2px 3px 4px;
+      margin-bottom: 10px;
+    }
+
+    .download-button {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #FF4655;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    
+    .download-button:hover {
+      background-color: #ff0f22;
+      text-decoration: none;
+      color:#ffd3d7;
+      border: 0
+    }
+
+    .goods-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      
+    }
+
+    .night-mode-switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 25px;
+    }
+
+    .night-mode-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .night-mode-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #F7F7F7;
+      border-radius: 25px;
+      transition: .4s;
+    }
+
+    .night-mode-slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 2px;
+      bottom: 2px;
+      background-color: #e45858;
+      border-radius: 50%;
+      transition: .4s;
+    }
+
+    input:checked + .night-mode-slider {
+      background-color: #303030;
+    }
+
+    input:checked + .night-mode-slider:before {
+      transform: translateX(25px);
+      background-color: #e45858;
+    }
+
+    .merch-description{
+      color: #1e1d1d;
+      text-shadow: #303030 2px 3px 4px;
+      
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="max-width: 100%; text-align: center; height: auto;">
+      <a href="https://playvalorant.com/en-us/download/"><img src="Valorant-Logo-PNG.png"></img></a>
+      <h1 style = 'color:#FF4655; font-weight: 750; font-size: 80px;'>MERCHANDISE</h1>
+      
+    </div>
+    
+  </header>
+
+  <div class="header">
+    <div class="night-mode-switch">
+      <label>
+        <input type="checkbox" id="nightModeToggle" onchange="toggleNightMode()">
+        <span class="night-mode-slider"></span>
+      </label>
+    </div>
+    <button class="download-button" id="backToHomeBtn" style="cursor: pointer; border: 0">Back to Home</button>
+    <button class="download-button" id="viewCartBtn" style="cursor: pointer; border: 0">View Cart</button>
+  </div>
+
+
+  <div class = 'goods-container'>
+    
+
+
+
+
+
+    <div class="merch-item">
+      <img class="merch-image" src="sweater.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Valorant Sweatshirt</h2>
+      <p class="merch-price">$39.99</p>
+      <p class="merch-description">Stay warm and stylish with this comfortable Valorant Sweatshirt.</p>
+      <button class="add-to-cart-btn" data-name="Valorant Sweatshirt" data-price="39.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="tshirt.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Valorant T-shirt</h2>
+      <p class="merch-price">$24.99</p>
+      <p class="merch-description">A versatile t-shirt with a modern design that perfectly combines comfort and style for everyday looks.</p>
+      <button class="add-to-cart-btn" data-name="Valorant T-shirt" data-price="24.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="shoper.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Valorant Shoper</h2>
+      <p class="merch-price">$19.99</p>
+      <p class="merch-description">Spacious and functional shopper with comfortable handles is the perfect solution for convenient and stylish shopping, helping to organize everything you need with ease.</p>
+      <button class="add-to-cart-btn" data-name="Valorant Shoper" data-price="19.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="jacket.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Valorant Raincoat</h2>
+      <p class="merch-price">$69.99</p>
+      <p class="merch-description">A practical and stylish raincoat with a water-repellent surface that provides reliable protection from the weather and emphasizes your individual style.</p>
+      <button class="add-to-cart-btn" data-name="Valorant Raincoat" data-price="69.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="mug_1.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Valorant Mug 1</h2>
+      <p class="merch-price">$11.99</p>
+      <p class="merch-description">With an original design and a comfortable handle, this exquisite mug is the perfect everyday companion for enjoying hot drinks in comfort and style.</p>
+      <button class="add-to-cart-btn" data-name="Valorant Mug 1" data-price="11.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="mug_2.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Valorant Mug 2</h2>
+      <p class="merch-price">$11.99</p>
+      <p class="merch-description">With an original design and a comfortable handle, this exquisite mug is the perfect everyday companion for enjoying hot drinks in comfort and style.</p>
+      <button class="add-to-cart-btn" data-name="Valorant Mug 2" data-price="11.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="mousepad_reyna.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Reyna Mousepad</h2>
+      <p class="merch-price">$19.99</p>
+      <p class="merch-description">Ergonomic mouse pad with special surface for smooth glide and precision.</p>
+      <button class="add-to-cart-btn" data-name="Reyna Mousepad" data-price="19.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="mousepad_viper.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Viper Mousepad</h2>
+      <p class="merch-price">$19.99</p>
+      <p class="merch-description">Ergonomic mouse pad with special surface for smooth glide and precision.</p>
+      <button class="add-to-cart-btn" data-name="Viper Mousepad" data-price="19.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="phoenix_figure.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Phoenix Figure</h2>
+      <p class="merch-price">$49.99</p>
+      <p class="merch-description">Crafted with meticulous attention to detail, Valorant character figure embodies his unique style and character through his expressive pose, painterly colors and a host of neat accessories.</p>
+      <button class="add-to-cart-btn" data-name="Phoenix Figure" data-price="49.99">Add to Cart</button>
+    </div>
+    <div class="merch-item">
+      <img class="merch-image" src="jett_figure.jpg" alt="Merchandise 1">
+      <h2 class="merch-name">Jett Figure</h2>
+      <p class="merch-price">$49.99</p>
+      <p class="merch-description">Crafted with meticulous attention to detail, Valorant character figure embodies his unique style and character through his expressive pose, painterly colors and a host of neat accessories.</p>
+      <button class="add-to-cart-btn" data-name="Jett Figure" data-price="49.99">Add to Cart</button>
+    </div>
+
+
+
+
+  
+
+    
+  </div>
+ 
+
+  <div id="cart" style="display: none; text-align: center;">
+    <h2>Shopping Cart</h2>
+    <ul id="cart-items">
+   
+    </ul>
+    <p>Total: $<span id="cart-total">0.00</span></p>
+    <button class = 'download-button'>Checkout</button>
+  </div>
+
+  
+  
+
+  <script> 
+    function toggleNightMode() {
+      const body = document.body;
+      const nightModeToggle = document.getElementById('nightModeToggle');
+
+      const merchDescription = document.querySelectorAll('.merch-description');
+
+      const merchPrice = document.querySelectorAll('.merch-price');
+
+      const merchItem = document.querySelectorAll('.merch-item');
+
+      
+
+
+      if (nightModeToggle.checked) {
+        body.style.backgroundColor = '#333';
+        body.style.color = '#fff';
+
+
+        merchDescription.forEach(element => {
+          element.style.color = '#E8FFF7';
+          element.style.textShadow = 'white 2px 3px 4px';
+        });
+
+        merchPrice.forEach(element => {
+          element.style.color = ' #a9a9a9';
+          element.style.textShadow = '#6d6d6d 2px 3px 4px';
+        });
+
+        merchItem.forEach(element => {
+          element.style.backgroundColor = '#1e1d1d';
+          
+        });
+
+        
+
+        
+        
+        body.style.backgroundImage = 'url(background3.jpg)';
+      } else {
+        body.style.backgroundColor = '#f5f5f5';
+        body.style.color = '#222';
+
+
+        merchDescription.forEach(element => {
+          element.style.color = ' #1e1d1d';
+          element.style.textShadow = '#303030 2px 3px 4px';
+        });
+
+        merchPrice.forEach(element => {
+          element.style.color = ' #777';
+          element.style.textShadow = '#6d6d6d 2px 3px 4px';
+        });
+
+        merchItem.forEach(element => {
+          element.style.backgroundColor = '#fff';
+          
+        });
+
+        body.style.backgroundImage = 'url(background2.jpg)';
+      }
+    }
+    
+
+    const viewCartBtn = document.getElementById('viewCartBtn');
+    const cart = document.getElementById('cart');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const backToHomeBtn = document.getElementById('backToHomeBtn');
+
+    viewCartBtn.addEventListener('click', () => {
+      cart.style.display = 'block';
+    });
+
+    backToHomeBtn.addEventListener('click', () => {
+      window.location.href = '123.html'; 
+    });
+
+    const addToCartButtons = document.getElementsByClassName('add-to-cart-btn');
+    for (const btn of addToCartButtons) {
+      btn.addEventListener('click', addToCart);
+    }
+
+    function addToCart(event) {
+      const itemName = event.target.dataset.name;
+      const itemPrice = parseFloat(event.target.dataset.price);
+
+      let cartItemsList = [];
+      let cartTotalValue = 0;
+
+      if (localStorage.getItem('cartItems')) {
+        cartItemsList = JSON.parse(localStorage.getItem('cartItems'));
+        cartTotalValue = parseFloat(localStorage.getItem('cartTotal'));
+      }
+
+      cartItemsList.push({ name: itemName, price: itemPrice });
+      cartTotalValue += itemPrice;
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItemsList));
+      localStorage.setItem('cartTotal', cartTotalValue.toFixed(2));
+
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      cartItems.innerHTML = '';
+      let cartItemsList = [];
+      let cartTotalValue = 0;
+
+      if (localStorage.getItem('cartItems')) {
+        cartItemsList = JSON.parse(localStorage.getItem('cartItems'));
+        cartTotalValue = parseFloat(localStorage.getItem('cartTotal'));
+      }
+
+      cartItemsList.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name}: $${item.price.toFixed(2)}`;
+        cartItems.appendChild(li);
+      });
+
+      cartTotal.textContent = cartTotalValue.toFixed(2);
+    }
+  </script>
+</body>
+</html>
